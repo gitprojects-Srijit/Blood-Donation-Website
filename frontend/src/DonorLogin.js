@@ -37,7 +37,7 @@ const DonorLogin = () => {
         if (data.message == true) {
             localStorage.setItem("loggedUser",email)
             alert("Donor Login Successfully")
-            window.location.reload()
+            //window.location.reload()
             navigate('/Home');
         }
         else {

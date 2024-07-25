@@ -41,7 +41,7 @@ function SearchDonor() {
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(search_donor)
             };
-            const response = await fetch(`http://localhost:5000/searchDonorByAddress`,requestOptions)
+            const response = await fetch(`'https://blood-donation-backend-a4xh.onrender.com/searchDonorByAddress`,requestOptions)
             const data1 = await response.json()
             console.log(45, data1)
             if(data1.length == 0)
@@ -67,7 +67,7 @@ function SearchDonor() {
                 body: JSON.stringify(search_donor)
             };
             setBloodgroup(val)
-            const response = await fetch(`http://localhost:5000/searchDonorByBloodgroup`,requestOptions)
+            const response = await fetch(`'https://blood-donation-backend-a4xh.onrender.com/searchDonorByBloodgroup`,requestOptions)
             const data2 = await response.json()
             setAlldonors(data2)
         }

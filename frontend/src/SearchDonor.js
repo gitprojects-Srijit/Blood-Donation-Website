@@ -28,13 +28,28 @@ function SearchDonor() {
     //  }, [])
 
     const filterByAddress = async (value) => {
+        console.log(31, value)
         if (value === null || value === "") {
             getData()
         }
         else {
-            const response = await fetch(`https://blood-donation-backend-a4xh.onrender.com/searchDonorByAddress/${value}`)
+            const search_donor = {
+                "address": value
+            }
+            const requestOptions = {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(search_donor)
+            };
+            const response = await fetch(`http://localhost:5000/searchDonorByAddress`,requestOptions)
             const data1 = await response.json()
-            setAlldonors(data1)
+            console.log(45, data1)
+            if(data1.length == 0)
+            {
+                setAlldonors([])
+            }
+            else
+                setAlldonors(data1)
         }
     }
 
@@ -43,8 +58,16 @@ function SearchDonor() {
             getData()
         }
         else {
+            const search_donor = {
+                "bloodgroup": val
+            }
+            const requestOptions = {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(search_donor)
+            };
             setBloodgroup(val)
-            const response = await fetch(`https://blood-donation-backend-a4xh.onrender.com/searchDonorByBloodgroup/${val}`)
+            const response = await fetch(`http://localhost:5000/searchDonorByBloodgroup`,requestOptions)
             const data2 = await response.json()
             setAlldonors(data2)
         }
@@ -86,7 +109,7 @@ function SearchDonor() {
             <div>
                 <div class="container-fluid" >
                     <form class="d-flex">
-                        <input class="form-control me-2" onChange={(e) => searchboth(e.target.value)} type="search" placeholder="Search bloodgroup by address" aria-label="Search" style={{ width: "82%", marginLeft: "10px" }} />
+                        <input class="form-control me-2" onChange={(e) => filterByAddress(e.target.value)} type="search" placeholder="Search bloodgroup by address" aria-label="Search" style={{ width: "82%", marginLeft: "10px" }} />
                         <select class="form-select" onChange={(e) => searchbybloodgroup(e.target.value)} aria-label="Default select example" style={{ width: '15%', marginLeft: '12px' }}>
                             <option value="" selected>select bloodgroup</option>
                             <option value="A+">A+</option>

@@ -1,8 +1,9 @@
 import './App.css';
 import { useState } from "react";
+import { useNavigate } from 'react-router-dom';
 import DonorList from "./DonorList";
 function DonorRegister(){
-
+    const navigate = useNavigate()
     const [name, setName] = useState("")
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
@@ -33,7 +34,7 @@ function DonorRegister(){
         if(data._id!=null)
         {
             alert("Registration Successfully")
-            window.location.reload()
+            navigate('/DonorLogin')
         }
         else
         {

@@ -8,7 +8,7 @@
     Users can search for blood donors by specifying their local address and blood group which makes it easy for users to find the right match quickly.
   </li>
   <li>
-    In this project, I implemented <b>"OTP (One-Time Password)"</b> verification to overcome user's forgot password issue which enhances the security and reliability of the password recovery process.
+    In this project, I implemented <b>OTP (One-Time Password)</b> verification to overcome user's forgot password issue which enhances the security and reliability of the password recovery process.
   </li>
   <li>
     Also I implemented hashing for passwords to ensure user data is securely stored and protect user credentials from unauthorized access.
